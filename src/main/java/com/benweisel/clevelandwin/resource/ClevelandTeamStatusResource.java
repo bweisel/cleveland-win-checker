@@ -37,7 +37,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @author bweisel
  */
 @Path("/") 
-@Produces(MediaType.TEXT_HTML) // Arduino needs this to be the Content-Type
+@Produces(MediaType.APPLICATION_JSON) // Arduino needs this to be the Content-Type
 public class ClevelandTeamStatusResource
 {
 	private static final Logger log = LoggerFactory.getLogger(ClevelandTeamStatusResource.class);
@@ -57,7 +57,7 @@ public class ClevelandTeamStatusResource
 	 * @param teamDAO the {@link ClevelandTeamStatusDAO} to interact with DynamoDB
 	 */
 	public ClevelandTeamStatusResource(ObjectMapper mapper, ClevelandTeamStatusDAO teamDAO) {
-		mapper = new ObjectMapper();
+		this.mapper = mapper;
 		this.teamDAO = teamDAO;
 	}
 	
